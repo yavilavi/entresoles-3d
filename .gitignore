@@ -1,0 +1,8 @@
+# Artefactos pesados / de autoría — fuera del repo de despliegue
+*.blend
+*.blend1
+apartment.glb
+renders/
+.playwright-mcp/
+*.py
+__pycache__/

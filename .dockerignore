@@ -1,0 +1,13 @@
+# Mantener el contexto de build pequeño: solo web/ + config entran a la imagen
+*
+!web/
+!nginx.conf
+!Dockerfile
+
+# Excluir explícitamente artefactos pesados / de autoría (por si acaso)
+entresoles.blend
+entresoles_baked.blend
+apartment.glb
+renders/
+.playwright-mcp/
+*.py

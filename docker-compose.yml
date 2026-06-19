@@ -1,0 +1,22 @@
+# Despliegue del visor 3D del apartamento en Dokploy (build desde repo Git)
+# Dokploy clona el repo y ejecuta: docker compose up -d --build
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: entresoles-viewer:latest
+    restart: unless-stopped
+    networks:
+      - dokploy-network          # red de Traefik/Dokploy para enrutar el dominio
+    expose:
+      - "80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+networks:
+  dokploy-network:
+    external: true
